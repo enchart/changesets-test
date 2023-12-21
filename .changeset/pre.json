@@ -4,5 +4,8 @@
   "initialVersions": {
     "@enchart-test/changesets-test": "2.2.0"
   },
-  "changesets": []
+  "changesets": [
+    "breezy-mails-cough",
+    "khaki-files-complain"
+  ]
 }
