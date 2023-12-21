@@ -1,5 +1,15 @@
 # @enchart-test/changesets-test
 
+## 2.1.0
+
+### Minor Changes
+
+- cddcbff: feat: remove number from exports
+
+### Patch Changes
+
+- 790fab0: fix: remove exclamation mark from message export in index.js
+
 ## 2.0.1
 
 ### Patch Changes
