@@ -1,5 +1,11 @@
 # @enchart-test/changesets-test
 
+## 2.2.0
+
+### Minor Changes
+
+- feat: add custom changelog format ([#6](https://github.com/enchart/changesets-test/pull/6))
+
 ## 2.1.0
 
 ### Minor Changes
