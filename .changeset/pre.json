@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@enchart-test/changesets-test": "2.2.0"
+  },
+  "changesets": []
+}
