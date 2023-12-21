@@ -1,0 +1,21 @@
+{
+  "name": "@enchart-test/changesets-test",
+  "description": "Testing the changesets workflows",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enchart/semantic-release-test.git"
+  },
+  "keywords": [],
+  "author": "enchart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enchart/semantic-release-test/issues"
+  },
+  "homepage": "https://github.com/enchart/semantic-release-test",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1"
+  }
+}
