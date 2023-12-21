@@ -1,5 +1,16 @@
 # @enchart-test/changesets-test
 
+## 3.0.0-next.0
+
+### Major Changes
+
+- Added new export to the index.js - `object`. This export will contain much more information than the previous version. ([#8](https://github.com/enchart/changesets-test/pull/8))
+  It will eventually break the compatibility with the previous versions of the library.
+
+### Minor Changes
+
+- Adds `message` property to the `object` export. This property contains a second message. ([#9](https://github.com/enchart/changesets-test/pull/9))
+
 ## 2.2.0
 
 ### Minor Changes
