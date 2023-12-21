@@ -1,5 +1,11 @@
 # @enchart-test/changesets-test
 
+## 3.0.0-next.1
+
+### Patch Changes
+
+- Fixes a bug where `object.number` is equal to `123` instead of the expected `456`. ([#10](https://github.com/enchart/changesets-test/pull/10))
+
 ## 3.0.0-next.0
 
 ### Major Changes
