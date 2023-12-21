@@ -1,4 +1,4 @@
 module.exports = {
   message: "Hi World!",
-  number: 123,
+  number: 1234,
 };

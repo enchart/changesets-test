@@ -10,7 +10,7 @@
     "url": "https://github.com/enchart/semantic-release-test.git"
   },
   "scripts": {
-    "release": "changesets publish"
+    "release": "changeset publish"
   },
   "keywords": [],
   "author": "enchart",
