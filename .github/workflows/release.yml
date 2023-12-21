@@ -1,60 +1,52 @@
-# name: Release
-# on:
-#   push:
-#     branches:
-#       - master
-#       - alpha
+name: Release
 
-# permissions:
-#   contents: read
+on:
+  push:
+    branches:
+      - master
 
-# jobs:
-#   release:
-#     name: Release
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: write
-#       issues: write
-#       pull-requests: write
-#       id-token: write
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#         with:
-#           fetch-depth: 0
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: "lts/*"
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
-#       - name: Install pnpm
-#         uses: pnpm/action-setup@v2
-#         with:
-#           version: 8
-#           run_install: false
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
 
-#       - name: Get pnpm store directory
-#         shell: bash
-#         run: |
-#           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
 
-#       - name: Setup pnpm cache
-#         uses: actions/cache@v3
-#         with:
-#           path: ${{ env.STORE_PATH }}
-#           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-#           restore-keys: |
-#             ${{ runner.os }}-pnpm-store-
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-#       - name: Install dependencies
-#         run: pnpm install
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
-#       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-#         run: npm audit signatures
+      - name: Install dependencies
+        run: pnpm install
 
-#       - name: Release
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-#         run: npx semantic-release
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

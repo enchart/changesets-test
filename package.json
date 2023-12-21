@@ -9,6 +9,9 @@
     "type": "git",
     "url": "https://github.com/enchart/semantic-release-test.git"
   },
+  "scripts": {
+    "release": "changesets publish"
+  },
   "keywords": [],
   "author": "enchart",
   "license": "MIT",
