@@ -1,5 +1,11 @@
 # @enchart-test/changesets-test
 
+## 2.0.1
+
+### Patch Changes
+
+- 64171db: Fix exported number from index.js
+
 ## 2.0.0
 
 ### Major Changes
